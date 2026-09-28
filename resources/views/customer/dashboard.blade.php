@@ -8,7 +8,7 @@
     <p class="text-gray-500 mb-6">Ini halaman akun kamu. Fitur belanja akan aktif bertahap di phase berikutnya.</p>
     <form method="POST" action="{{ route('logout') }}">
         @csrf
-        <button class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 text-sm">Logout</button>
+        <button class="bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700 text-sm">Logout</button>
     </form>
 </div>
 @endsection

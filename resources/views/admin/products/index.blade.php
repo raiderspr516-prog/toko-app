@@ -5,14 +5,14 @@
 @section('content')
 <div class="flex items-center justify-between mb-4">
     <form method="GET" class="flex flex-wrap gap-2">
-        <input type="text" name="cari" value="{{ request('cari') }}" placeholder="Cari nama/SKU..." class="rounded-lg border-gray-300 text-sm">
-        <select name="category_id" class="rounded-lg border-gray-300 text-sm" onchange="this.form.submit()">
+        <input type="text" name="cari" value="{{ request('cari') }}" placeholder="Cari nama/SKU..." class="rounded-xl border-gray-300 text-sm">
+        <select name="category_id" class="rounded-xl border-gray-300 text-sm" onchange="this.form.submit()">
             <option value="">Semua Kategori</option>
             @foreach ($categories as $cat)
                 <option value="{{ $cat->id }}" @selected(request('category_id') == $cat->id)>{{ $cat->name }}</option>
             @endforeach
         </select>
-        <select name="status" class="rounded-lg border-gray-300 text-sm" onchange="this.form.submit()">
+        <select name="status" class="rounded-xl border-gray-300 text-sm" onchange="this.form.submit()">
             <option value="">Semua Status</option>
             <option value="draft" @selected(request('status')==='draft')>Draft</option>
             <option value="active" @selected(request('status')==='active')>Aktif</option>
@@ -20,14 +20,14 @@
         </select>
         <button class="bg-gray-800 text-white px-3 py-1.5 rounded-lg text-sm">Cari</button>
     </form>
-    <a href="{{ route('admin.products.create') }}" class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-emerald-700">+ Tambah Produk</a>
+    <a href="{{ route('admin.products.create') }}" class="bg-orange-500 text-white px-4 py-2 rounded-xl text-sm hover:bg-orange-600">+ Tambah Produk</a>
 </div>
 
 @if (session('success'))
     <div class="mb-4 rounded-lg bg-green-100 text-green-800 px-4 py-3 text-sm">{{ session('success') }}</div>
 @endif
 
-<div class="bg-white rounded-xl shadow overflow-x-auto">
+<div class="bg-white rounded-2xl shadow-sm overflow-x-auto">
     <table class="w-full text-sm">
         <thead class="bg-gray-50 text-left text-gray-500">
             <tr>
@@ -73,7 +73,7 @@
                 <td class="px-4 py-3">{{ $product->is_featured ? '⭐' : '-' }}</td>
                 <td class="px-4 py-3 whitespace-nowrap">
                     <a href="{{ route('admin.products.show', $product) }}" class="text-gray-600 hover:underline text-xs">Detail</a>
-                    <a href="{{ route('admin.products.edit', $product) }}" class="text-emerald-600 hover:underline text-xs ml-2">Edit</a>
+                    <a href="{{ route('admin.products.edit', $product) }}" class="text-orange-600 hover:underline text-xs ml-2">Edit</a>
                     <form action="{{ route('admin.products.destroy', $product) }}" method="POST" class="inline" onsubmit="return confirm('Hapus produk ini?')">
                         @csrf @method('DELETE')
                         <button class="text-red-600 hover:underline text-xs ml-2">Hapus</button>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Detail Produk')
 @section('content')
-<div class="bg-white rounded-xl shadow p-6 max-w-2xl">
+<div class="bg-white rounded-2xl shadow-sm p-6 max-w-2xl">
     <h3 class="font-semibold text-lg mb-4">{{ $product->name }}</h3>
     <table class="w-full text-sm mb-6">
         <tr class="border-b"><td class="py-2 text-gray-500 w-48">SKU</td><td class="py-2">{{ $product->sku }}</td></tr>

@@ -5,7 +5,7 @@
 @section('content')
 <div class="flex items-center justify-between mb-4">
     <h2 class="font-semibold text-gray-800">Daftar Kategori</h2>
-    <a href="{{ route('admin.categories.create') }}" class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-emerald-700">+ Tambah Kategori</a>
+    <a href="{{ route('admin.categories.create') }}" class="bg-orange-500 text-white px-4 py-2 rounded-xl text-sm hover:bg-orange-600">+ Tambah Kategori</a>
 </div>
 
 @if (session('success'))
@@ -15,7 +15,7 @@
     <div class="mb-4 rounded-lg bg-red-100 text-red-800 px-4 py-3 text-sm">{{ session('error') }}</div>
 @endif
 
-<div class="bg-white rounded-xl shadow overflow-x-auto">
+<div class="bg-white rounded-2xl shadow-sm overflow-x-auto">
     <table class="w-full text-sm">
         <thead class="bg-gray-50 text-left text-gray-500">
             <tr>
@@ -46,7 +46,7 @@
                     </span>
                 </td>
                 <td class="px-4 py-3 whitespace-nowrap">
-                    <a href="{{ route('admin.categories.edit', $category) }}" class="text-emerald-600 hover:underline text-xs">Edit</a>
+                    <a href="{{ route('admin.categories.edit', $category) }}" class="text-orange-600 hover:underline text-xs">Edit</a>
                     <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" class="inline" onsubmit="return confirm('Hapus kategori ini?')">
                         @csrf @method('DELETE')
                         <button class="text-red-600 hover:underline text-xs ml-2">Hapus</button>

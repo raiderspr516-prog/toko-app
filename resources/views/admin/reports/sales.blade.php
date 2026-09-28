@@ -2,14 +2,14 @@
 @section('title', 'Laporan Penjualan')
 @section('content')
 <form method="GET" class="mb-4">
-    <select name="period" class="rounded-lg border-gray-300 text-sm" onchange="this.form.submit()">
+    <select name="period" class="rounded-xl border-gray-300 text-sm" onchange="this.form.submit()">
         <option value="daily" @selected($period==='daily')>Harian</option>
         <option value="weekly" @selected($period==='weekly')>Mingguan</option>
         <option value="monthly" @selected($period==='monthly')>Bulanan</option>
         <option value="yearly" @selected($period==='yearly')>Tahunan</option>
     </select>
 </form>
-<div class="bg-white rounded-xl shadow overflow-x-auto">
+<div class="bg-white rounded-2xl shadow-sm overflow-x-auto">
     <table class="w-full text-sm">
         <thead class="bg-gray-50 text-left text-gray-500"><tr><th class="px-4 py-3">Periode</th><th class="px-4 py-3">Jumlah Order</th><th class="px-4 py-3">Total Pendapatan</th></tr></thead>
         <tbody>

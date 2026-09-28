@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Laporan Customer')
 @section('content')
-<div class="bg-white rounded-xl shadow overflow-x-auto">
+<div class="bg-white rounded-2xl shadow-sm overflow-x-auto">
     <table class="w-full text-sm">
         <thead class="bg-gray-50 text-left text-gray-500"><tr><th class="px-4 py-3">Customer</th><th class="px-4 py-3">Jumlah Order</th><th class="px-4 py-3">Total Belanja</th></tr></thead>
         <tbody>

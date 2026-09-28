@@ -17,12 +17,12 @@
         $currentIndex = array_search($order->status, $order_progress);
     @endphp
     @if (!in_array($order->status, ['cancelled', 'expired']))
-    <div class="bg-white rounded-xl shadow p-5 mb-4">
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-4">
         <div class="flex justify-between text-xs text-gray-500">
             @foreach ($steps as $key => $label)
                 @php $stepIndex = array_search($key, $order_progress); @endphp
-                <div class="flex-1 text-center {{ $currentIndex >= $stepIndex ? 'text-emerald-600 font-medium' : '' }}">
-                    <div class="w-3 h-3 rounded-full mx-auto mb-1 {{ $currentIndex >= $stepIndex ? 'bg-emerald-600' : 'bg-gray-300' }}"></div>
+                <div class="flex-1 text-center {{ $currentIndex >= $stepIndex ? 'text-orange-600 font-medium' : '' }}">
+                    <div class="w-3 h-3 rounded-full mx-auto mb-1 {{ $currentIndex >= $stepIndex ? 'bg-orange-500' : 'bg-gray-300' }}"></div>
                     {{ $label }}
                 </div>
             @endforeach
@@ -35,7 +35,7 @@
     </div>
     @endif
 
-    <div class="bg-white rounded-xl shadow p-5 mb-4">
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-4">
         <h3 class="font-semibold mb-2">Item Pesanan</h3>
         @foreach ($order->items as $item)
         <div class="flex justify-between text-sm py-1">
@@ -47,20 +47,20 @@
             <div class="flex justify-between"><span class="text-gray-500">Subtotal</span><span>Rp{{ number_format($order->subtotal,0,',','.') }}</span></div>
             <div class="flex justify-between"><span class="text-gray-500">Ongkir</span><span>Rp{{ number_format($order->shipping_cost,0,',','.') }}</span></div>
             @if ($order->discount_amount)
-            <div class="flex justify-between text-emerald-600"><span>Diskon</span><span>-Rp{{ number_format($order->discount_amount,0,',','.') }}</span></div>
+            <div class="flex justify-between text-orange-600"><span>Diskon</span><span>-Rp{{ number_format($order->discount_amount,0,',','.') }}</span></div>
             @endif
             <div class="flex justify-between font-bold text-base"><span>Total</span><span>Rp{{ number_format($order->grand_total,0,',','.') }}</span></div>
         </div>
     </div>
 
-    <div class="bg-white rounded-xl shadow p-5 mb-4">
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-4">
         <h3 class="font-semibold mb-2">Alamat Pengiriman</h3>
         <p class="text-sm text-gray-600">{{ $order->address->recipient_name }} — {{ $order->address->phone }}</p>
         <p class="text-sm text-gray-600">{{ $order->address->fullText() }}</p>
     </div>
 
     @if ($order->shipment && $order->shipment->tracking_number)
-    <div class="bg-white rounded-xl shadow p-5 mb-4">
+    <div class="bg-white rounded-2xl shadow-sm p-5 mb-4">
         <h3 class="font-semibold mb-2">Info Pengiriman</h3>
         <p class="text-sm">Kurir: {{ $order->shipment->courier }}</p>
         <p class="text-sm">No. Resi: {{ $order->shipment->tracking_number }}</p>
@@ -69,12 +69,12 @@
 
     <div class="flex gap-3">
         @if (in_array($order->status, ['pending', 'waiting_payment']))
-            <a href="{{ route('checkout.payment', $order) }}" class="flex-1 text-center bg-emerald-600 text-white py-2.5 rounded-lg hover:bg-emerald-700 text-sm font-medium">Bayar Sekarang</a>
+            <a href="{{ route('checkout.payment', $order) }}" class="flex-1 text-center bg-orange-500 text-white py-2.5 rounded-xl hover:bg-orange-600 text-sm font-medium">Bayar Sekarang</a>
         @endif
         @if ($order->isCancellableByCustomer())
             <form method="POST" action="{{ route('orders.cancel', $order) }}" onsubmit="return confirm('Batalkan pesanan ini?')" class="flex-1">
                 @csrf
-                <button class="w-full border border-red-500 text-red-600 py-2.5 rounded-lg hover:bg-red-50 text-sm">Batalkan Pesanan</button>
+                <button class="w-full border border-red-500 text-red-600 py-2.5 rounded-xl hover:bg-red-50 text-sm">Batalkan Pesanan</button>
             </form>
         @endif
     </div>

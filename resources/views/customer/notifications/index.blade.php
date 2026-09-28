@@ -6,12 +6,12 @@
         <h1 class="text-xl font-bold text-gray-800">Notifikasi</h1>
         <form method="POST" action="{{ route('notifications.mark-all-read') }}">
             @csrf
-            <button class="text-sm text-emerald-600 hover:underline">Tandai semua dibaca</button>
+            <button class="text-sm text-orange-600 hover:underline">Tandai semua dibaca</button>
         </form>
     </div>
     <div class="space-y-2">
         @forelse ($notifications as $notif)
-        <div class="bg-white rounded-xl shadow p-4 flex items-start justify-between {{ $notif->read_at ? 'opacity-60' : '' }}">
+        <div class="bg-white rounded-2xl shadow-sm p-4 flex items-start justify-between {{ $notif->read_at ? 'opacity-60' : '' }}">
             <div>
                 <p class="font-medium text-gray-800">{{ $notif->data['title'] }}</p>
                 <p class="text-sm text-gray-500">{{ $notif->data['message'] }}</p>
@@ -20,7 +20,7 @@
             @if (!$notif->read_at)
             <form method="POST" action="{{ route('notifications.mark-read', $notif->id) }}">
                 @csrf
-                <button class="text-xs text-emerald-600 hover:underline">Tandai dibaca</button>
+                <button class="text-xs text-orange-600 hover:underline">Tandai dibaca</button>
             </form>
             @endif
         </div>

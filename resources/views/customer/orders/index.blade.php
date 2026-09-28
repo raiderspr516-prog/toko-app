@@ -5,7 +5,7 @@
     <h1 class="text-xl font-bold text-gray-800 mb-4">Riwayat Pesanan</h1>
 
     <form method="GET" class="mb-4">
-        <select name="status" class="rounded-lg border-gray-300 text-sm" onchange="this.form.submit()">
+        <select name="status" class="rounded-xl border-gray-300 text-sm" onchange="this.form.submit()">
             <option value="">Semua Status</option>
             @foreach (['pending','waiting_payment','payment_review','paid','processing','shipped','completed','cancelled','expired'] as $s)
                 <option value="{{ $s }}" @selected(request('status')===$s)>{{ ucfirst(str_replace('_',' ',$s)) }}</option>
@@ -15,7 +15,7 @@
 
     <div class="space-y-3">
         @forelse ($orders as $order)
-        <a href="{{ route('orders.show', $order) }}" class="block bg-white rounded-xl shadow p-4 hover:shadow-md">
+        <a href="{{ route('orders.show', $order) }}" class="block bg-white rounded-2xl shadow-sm p-4 hover:shadow-md">
             <div class="flex items-center justify-between mb-1">
                 <p class="font-semibold text-gray-800">{{ $order->order_number }}</p>
                 <span class="px-2 py-1 rounded text-xs bg-gray-100 text-gray-700">{{ $order->statusLabel() }}</span>

@@ -2,7 +2,7 @@
 @section('title', 'Verifikasi Pembayaran')
 @section('content')
 <form method="GET" class="mb-4">
-    <select name="status" class="rounded-lg border-gray-300 text-sm" onchange="this.form.submit()">
+    <select name="status" class="rounded-xl border-gray-300 text-sm" onchange="this.form.submit()">
         <option value="pending" @selected(request('status','pending')==='pending')>Menunggu Verifikasi</option>
         <option value="approved" @selected(request('status')==='approved')>Disetujui</option>
         <option value="rejected" @selected(request('status')==='rejected')>Ditolak</option>
@@ -14,7 +14,7 @@
 
 <div class="space-y-3">
     @forelse ($proofs as $proof)
-    <div class="bg-white rounded-xl shadow p-4 flex items-center gap-4">
+    <div class="bg-white rounded-2xl shadow-sm p-4 flex items-center gap-4">
         <a href="{{ route('admin.payment-proofs.view', $proof) }}" target="_blank" class="w-20 h-20 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
             <span class="text-2xl">🧾</span>
         </a>
@@ -26,7 +26,7 @@
                 <p class="text-xs text-red-600 mt-1">Ditolak: {{ $proof->admin_note }}</p>
             @endif
         </div>
-        <a href="{{ route('admin.payment-proofs.view', $proof) }}" target="_blank" class="text-xs text-emerald-600 hover:underline">Lihat Bukti</a>
+        <a href="{{ route('admin.payment-proofs.view', $proof) }}" target="_blank" class="text-xs text-orange-600 hover:underline">Lihat Bukti</a>
         @if ($proof->status === 'pending')
         <div class="flex gap-2">
             <form method="POST" action="{{ route('admin.payment-verification.approve', $proof) }}">

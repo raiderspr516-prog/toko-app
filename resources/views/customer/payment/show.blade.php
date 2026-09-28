@@ -2,9 +2,9 @@
 @section('title', 'Pembayaran')
 @section('content')
 <div class="max-w-lg mx-auto px-4 py-8">
-    <div class="bg-white rounded-xl shadow p-6 text-center">
+    <div class="bg-white rounded-2xl shadow-sm p-6 text-center">
         <h1 class="text-lg font-bold text-gray-800 mb-1">Pembayaran Order {{ $order->order_number }}</h1>
-        <p class="text-2xl font-bold text-emerald-600 mb-4">Rp{{ number_format($order->grand_total,0,',','.') }}</p>
+        <p class="text-2xl font-bold text-orange-600 mb-4">Rp{{ number_format($order->grand_total,0,',','.') }}</p>
 
         @if (session('success'))<div class="mb-4 rounded-lg bg-green-100 text-green-800 px-4 py-3 text-sm text-left">{{ session('success') }}</div>@endif
         @if (session('error'))<div class="mb-4 rounded-lg bg-red-100 text-red-800 px-4 py-3 text-sm text-left">{{ session('error') }}</div>@endif
@@ -32,7 +32,7 @@
                 <label class="block text-sm font-medium text-gray-700 mb-1">Upload Bukti Pembayaran</label>
                 <input type="file" name="proof" accept="image/jpeg,image/png,image/webp" class="w-full mb-2" required>
                 @error('proof') <p class="text-red-600 text-xs mb-2">{{ $message }}</p> @enderror
-                <button class="w-full bg-emerald-600 text-white py-2.5 rounded-lg hover:bg-emerald-700">Upload Bukti Bayar</button>
+                <button class="w-full bg-orange-500 text-white py-2.5 rounded-xl hover:bg-orange-600">Upload Bukti Bayar</button>
             </form>
         @else
             <div class="bg-red-50 text-red-700 rounded-lg p-4 text-sm">{{ $gatewayResult->message }}</div>
